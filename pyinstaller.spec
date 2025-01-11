@@ -21,6 +21,7 @@ hiddenimports += collect_submodules('mmap')
 hiddenimports += collect_submodules('uuid')
 hiddenimports += collect_submodules('compileall')
 hiddenimports += collect_submodules('plistlib')
+hiddenimports += collect_submodules('ctypes')
 
 pprint(hiddenimports)
 
