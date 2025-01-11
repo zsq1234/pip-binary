@@ -24,6 +24,10 @@ import runpy
 lib = os.path.dirname(__file__)
 sys.path.insert(0, lib)
 
+sys.stderr.write(f"Main: {sys.argv}\n")
+sys.stderr.write(f"Main: {len(sys.argv)}\n")
+sys.stderr.write(f"Main: {sys.argv[1]}\n")
+
 if len(sys.argv) > 1 and sys.argv[1].endswith('__pip-runner__.py'):
     runpy.run_path(sys.argv[1], run_name="__main__")
 
