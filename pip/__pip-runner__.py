@@ -46,5 +46,14 @@ class PipImportRedirectingFinder:
 
 sys.meta_path.insert(0, PipImportRedirectingFinder())
 
+sys.stderr.write(f"Runner 1: {sys.argv}\n")
+
 assert __name__ == "__main__", "Cannot run __pip-runner__.py as a non-main module"
+
+sys.stderr.write(f"Runner 2: {sys.argv}\n")
+
+sys.argv = sys.argv[1:]
+
 runpy.run_module("pip", run_name="__main__", alter_sys=True)
+
+sys.stderr.write(f"Runner 3: {sys.argv}\n")
