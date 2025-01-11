@@ -87,6 +87,9 @@ def parse_command(args: List[str]) -> Tuple[str, List[str]]:
                 f"Could not locate Python interpreter {general_options.python}"
             )
 
+        sys.stderr.write(
+            f"INFO 2 -- Running pip with {interpreter} instead of {sys.executable}{os.linesep}"
+        )
         pip_cmd = [
             interpreter,
             get_runnable_pip(),
