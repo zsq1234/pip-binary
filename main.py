@@ -23,4 +23,8 @@ import runpy
 
 lib = os.path.dirname(__file__)
 sys.path.insert(0, lib)
+
+if len(sys.argv) > 1 and sys.argv[1].endswith('__pip-runner__.py'):
+    runpy.run_path(sys.argv[1], run_name="__main__")
+
 runpy.run_module("pip", run_name="__main__")
