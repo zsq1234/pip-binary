@@ -24,6 +24,9 @@ import runpy
 lib = os.path.dirname(__file__)
 sys.path.insert(0, lib)
 
+if getattr(sys, 'frozen', False):
+    os.environ['REQUESTS_CA_BUNDLE'] = os.path.join(sys._MEIPASS, 'certifi', 'cacert.pem')
+
 if len(sys.argv) > 1 and sys.argv[1].endswith('.py'):
     path = sys.argv[1]
     sys.argv = sys.argv[1:]
