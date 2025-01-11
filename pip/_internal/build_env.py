@@ -215,7 +215,6 @@ class BuildEnvironment:
         prefix.setup = True
         if not requirements:
             return
-        sys.stderr.write(f"INFO 1 ----- Installing build dependencies: {kind}.\n")
         self._install_requirements(
             get_runnable_pip(),
             finder,
@@ -249,8 +248,6 @@ class BuildEnvironment:
             "",
         ]
         
-        sys.stderr.write(f"INFO 2 ----- {args}\n")
-
         if logger.getEffectiveLevel() <= logging.DEBUG:
             args.append("-vv")
         elif logger.getEffectiveLevel() <= VERBOSE:
