@@ -28,9 +28,11 @@ sys.stderr.write(f"Main: {sys.argv}\n")
 sys.stderr.write(f"Main: {len(sys.argv)}\n")
 sys.stderr.write(f"Main: {sys.argv[1]}\n")
 
-if len(sys.argv) > 1 and sys.argv[1].endswith('__pip-runner__.py'):
-    sys.stderr.write(f"Main: run {sys.argv[1]}\n")
-    a = runpy.run_path(sys.argv[1], run_name="__main__")
+if len(sys.argv) > 1 and sys.argv[1].endswith('.py'):
+    path = sys.argv[1]
+    sys.stderr.write(f"Main: run {path}\n")
+    sys.argv = sys.argv[1:]
+    a = runpy.run_path(path, run_name="__main__")
     sys.stderr.write(f"Main: {a}\n")
 else:
     runpy.run_module("pip", run_name="__main__")
