@@ -22,6 +22,7 @@ hiddenimports += collect_submodules('uuid')
 hiddenimports += collect_submodules('compileall')
 hiddenimports += collect_submodules('plistlib')
 hiddenimports += collect_submodules('ctypes')
+hiddenimports += collect_submodules('wheel')
 hiddenimports += collect_submodules('setuptools')
 
 pprint(hiddenimports)
