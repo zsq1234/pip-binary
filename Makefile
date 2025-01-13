@@ -1,4 +1,4 @@
 
 .PHONY: build
 build:
-	pyinstaller pyinstaller.spec --distpath bin
+	pyinstaller pyinstaller.spec --distpath bin -y
