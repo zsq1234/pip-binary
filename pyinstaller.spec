@@ -2,8 +2,11 @@
 
 from PyInstaller.utils.hooks import collect_submodules
 from pprint import pprint
+import certifi
 
-datas = [('./pip', './pip')]
+cert_path = certifi.where()
+
+datas = [('./pip', './pip'), (cert_path, './certifi')]
 binaries = []
 hiddenimports = []
 
@@ -22,6 +25,7 @@ hiddenimports += collect_submodules('uuid')
 hiddenimports += collect_submodules('compileall')
 hiddenimports += collect_submodules('plistlib')
 hiddenimports += collect_submodules('ctypes')
+hiddenimports += collect_submodules('setuptools')
 
 pprint(hiddenimports)
 

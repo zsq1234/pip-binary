@@ -24,7 +24,12 @@ import runpy
 lib = os.path.dirname(__file__)
 sys.path.insert(0, lib)
 
-if len(sys.argv) > 1 and sys.argv[1].endswith('__pip-runner__.py'):
-    runpy.run_path(sys.argv[1], run_name="__main__")
+if getattr(sys, 'frozen', False):
+    os.environ['REQUESTS_CA_BUNDLE'] = os.path.join(sys._MEIPASS, 'certifi', 'cacert.pem')
 
-runpy.run_module("pip", run_name="__main__")
+if len(sys.argv) > 1 and sys.argv[1].endswith('.py'):
+    path = sys.argv[1]
+    sys.argv = sys.argv[1:]
+    runpy.run_path(path, run_name="__main__")
+else:
+    runpy.run_module("pip", run_name="__main__")

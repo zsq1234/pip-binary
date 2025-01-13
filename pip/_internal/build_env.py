@@ -247,6 +247,7 @@ class BuildEnvironment:
             "--target",
             "",
         ]
+        
         if logger.getEffectiveLevel() <= logging.DEBUG:
             args.append("-vv")
         elif logger.getEffectiveLevel() <= VERBOSE:
