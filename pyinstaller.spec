@@ -1,16 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-from PyInstaller.utils.hooks import collect_submodules
+from PyInstaller.utils.hooks import collect_submodules, collect_all
 from pprint import pprint
 import certifi
-import setuptools
-import os
 
 cert_path = certifi.where()
 
-pprint(os.path.dirname(setuptools.__file__))
-
-datas = [('./pip', './pip'), (cert_path, './certifi'), (os.path.dirname(setuptools.__file__), './setuptools')]
+datas = [('./pip', './pip'), (cert_path, './certifi')]
 binaries = []
 hiddenimports = []
 
@@ -29,6 +25,12 @@ hiddenimports += collect_submodules('uuid')
 hiddenimports += collect_submodules('compileall')
 hiddenimports += collect_submodules('plistlib')
 hiddenimports += collect_submodules('ctypes')
+
+setuptools_info = collect_all('setuptools')
+
+datas += setuptools_info[0]
+binaries += setuptools_info[1]
+hiddenimports += setuptools_info[2]
 
 pprint(hiddenimports)
 
